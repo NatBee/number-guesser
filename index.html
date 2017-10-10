@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head><title>Number Guesser Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <header>
+      <span>
+        <h1 class="header-1">Number</h1>
+      </span>
+      <span>
+        <h1 class="header-2">Guesser</h1>
+      </span>
+    </header>
+    <div>
+      <label for="user-guess"></label>
+      <input type="text" id="user-guess" name="user-guess" required placeholder="Enter you guess" min="0" max="100">
+    </div>
+    <div>
+      <button alt="submit-guess" id="submit-guess" disabled>Guess</button>      
+      <button alt="clear-guess" id="clear-guess" disabled>Clear</button>      
+    </div>
+    <div>
+      <h2 class="guess-1">Your last guess was</h2>
+      <h1 class="last-guess">25</h1>
+      <h2 class="guess-2">That is too high</h2>
+      <button alt="reset-button" id="reset" disabled>Reset</button>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
