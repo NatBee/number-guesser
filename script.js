@@ -1,26 +1,50 @@
-var form = document.querySelector('#number-guesser');
-var randomNumber = Math.floor(Math.random() * 100) + 1;
+var form = document.querySelector('#number-guesser'); 
 var userGuessField = document.querySelector('#user-guess');
 var submitGuess = document.querySelector('#submit-guess');
 var lastGuess = document.querySelector('.last-guess');
 var hiLoResult = document.querySelector('.guess-2');
 var clearButton = document.querySelector('#clear-guess');
 var resetButton = document.querySelector('#reset');
-var maxInput = userGuessField.max;
-var minInput = userGuessField.min;
+var maxInput = parseInt(document.getElementById('max').value) || 100;
+var minInput = parseInt(document.getElementById('min').value) || 0;
+var changeRangeButton = document.querySelector('#change-range'); 
+var maxInputChange = document.querySelector('#max');
+var minInputChange = document.querySelector('#min');
+var randomNumber = generateRandomNumber();
+
+function generateRandomNumber() {
+  return Math.floor(Math.random() * (maxInput - minInput + 1)) + minInput;
+}
 
 userGuessField.addEventListener('keyup', enableOrDisable);
+maxInputChange.addEventListener('keyup', enableOrDisable);
+minInputChange.addEventListener('keyup', enableOrDisable);
 
 function enableOrDisable() {
   if (userGuessField.disable = true) {
     submitGuess.removeAttribute('disabled', false);
     clearButton.removeAttribute('disabled', false);
     resetButton.removeAttribute('disabled', false);
+    changeRangeButton.removeAttribute('disabled', false);
   }
 }
-//.disable use .removeAttribute (gets rid of disable)
+
+changeRangeButton.addEventListener('click', changeRange);
+
+console.log(randomNumber);
+console.log(maxInput);
+console.log(minInput);
+function changeRange() {
+
+  maxInput = parseInt(maxInputChange.value) || maxInput;
+  minInput = parseInt(minInputChange.value) || minInput;
+
+  form.reset();
+  generateRandomNumber();
+}
+
 submitGuess.addEventListener('click', checkGuess);
-//.setAttribute('disabled', true) - resets the disable
+
 function checkGuess(event) {
   event.preventDefault();
   var userGuess = parseInt(userGuessField.value);
@@ -54,6 +78,7 @@ function checkGuess(event) {
   }
 }
 
+
 clearButton.addEventListener('click', clearGuess);
 
 function clearGuess() {
@@ -64,5 +89,6 @@ resetButton.addEventListener('click', resetPage);
 
 function resetPage() {
   form.reset();
-  randomNumber;
+  generateRandomNumber();
 }
+
