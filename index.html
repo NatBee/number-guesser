@@ -13,21 +13,29 @@
         <h1 class="header-2">Guesser</h1>
       </span>
     </header>
-    <div>
-      <label for="user-guess"></label>
-      <input type="text" id="user-guess" name="user-guess" required placeholder="Enter you guess" min="0" max="100">
-    </div>
-    <div>
-      <button alt="submit-guess" id="submit-guess" disabled>Guess</button>      
-      <button alt="clear-guess" id="clear-guess" disabled>Clear</button>      
-    </div>
-    <div>
-      <h2 class="guess-1">Your last guess was</h2>
-      <h1 class="last-guess">25</h1>
-      <h2 class="guess-2">That is too high</h2>
-      <button alt="reset-button" id="reset" disabled>Reset</button>
-    </div>
-
+      <form id="number-guesser">
+        <div>
+          <label for="user-guess"></label>
+          <input type="text" id="user-guess" name="user-guess" required placeholder="Enter you guess" min="0" max="100">
+        </div>
+        <div>
+          <button alt="submit-guess" id="submit-guess" disabled>Guess</button>      
+          <button alt="clear-guess" id="clear-guess" disabled>Clear</button>      
+        </div>
+        <div>
+          <h2 class="guess-1">Your last guess was</h2>
+          <h1 class="last-guess">#</h1>
+          <h2 class="guess-2">BOOM!</h2>
+          <button alt="reset-button" id="reset" disabled>Reset</button>
+        </div>
+        <div>
+          <label for="min">Min</label>
+          <input type="text" id="min" placeholder="0">
+          <label for="max">Max</label>
+          <input type="text" id="max" placeholder="100">
+          <button alt="change-number-range" id="change-range" disabled>Change</button>
+        </div>
+      </form>
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>

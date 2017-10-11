@@ -38,7 +38,7 @@ button:disabled {
   font-size: 25px;
   font-weight: 100;
   letter-spacing: .5px;
-  margin: 20px 15px 0px;
+  margin: 20px 15px -16px;
   padding: 6px 56px; 
 }
 
@@ -102,3 +102,9 @@ button:hover {
   margin: 44px 0px 18px;
   padding: 2px 121px 2px 5px;
 }
+
+#change-range {
+  font-size: 16px;
+  padding: 2px 15px 4px 13px;
+}
+
