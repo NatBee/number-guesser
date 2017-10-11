@@ -10,6 +10,7 @@ var changeRangeButton = document.querySelector('#change-range');
 var maxInputChange = document.querySelector('#max');
 var minInputChange = document.querySelector('#min');
 var randomNumber = generateRandomNumber();
+var guessCounter = 1;
 
 userGuessField.addEventListener('keyup', enableOrDisable);
 maxInputChange.addEventListener('keyup', enableOrDisable);
@@ -31,23 +32,22 @@ function changeRange() {
   minInput = parseInt(minInputChange.value) || minInput;
 
   randomNumber = generateRandomNumber();
-
-console.log(randomNumber);
 console.log(minInput);
 console.log(maxInput);
+console.log(randomNumber);
 }
 
 
 function generateRandomNumber() {
   return Math.floor(Math.random() * (maxInput - minInput + 1)) + minInput;
 }
-console.log(randomNumber);
 
 submitGuess.addEventListener('click', checkGuess);
 
 function checkGuess(event) {
   event.preventDefault();
   var userGuess = parseInt(userGuessField.value);
+  
   function lastGuessStore() {
     lastGuess.innerText = userGuess;
   }
@@ -55,6 +55,8 @@ function checkGuess(event) {
   if (userGuess === randomNumber) {
     hiLoResult.innerText = 'BOOM!';
     lastGuessStore();
+    winRangeChange();
+    score();
   }
   else if (userGuess > maxInput) {
     hiLoResult.innerText = 'Choose a # between ' + minInput + "-" + maxInput;
@@ -76,7 +78,36 @@ function checkGuess(event) {
     hiLoResult.innerText = 'NaN';
     lastGuessStore();
   }
+  
+  guessCounter ++;
+  console.log(guessCounter);
 }
+
+function score() {
+  if(guessCounter === 1) {
+    alert("Amazing! You guessed it in 1 try. You have earned a Master Number Ninja Medal");
+  }
+  else if(guessCounter <= 10) {
+    alert("Nice job! You guessed the number in " + guessCounter + " tries. You have earned a Number Ninja Medal");
+  }
+  else if(guessCounter > 10) {
+    alert("Nice effor! You guessed the number in " + guessCounter + " tries. You have earned a Number Ninja in Training Medal");
+  }
+}
+
+function winRangeChange() {
+  maxInput += 10;
+  minInput -= 10;
+  randomNumber = generateRandomNumber();
+
+console.log(minInput);
+console.log(maxInput);
+console.log(randomNumber);
+}
+
+console.log(minInput);
+console.log(maxInput);
+console.log(randomNumber);
 
 
 clearButton.addEventListener('click', clearGuess);
