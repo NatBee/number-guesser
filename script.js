@@ -1,4 +1,3 @@
-var form = document.querySelector('#number-guesser'); 
 var userGuessField = document.querySelector('#user-guess');
 var submitGuess = document.querySelector('#submit-guess');
 var lastGuess = document.querySelector('.last-guess');
@@ -11,10 +10,6 @@ var changeRangeButton = document.querySelector('#change-range');
 var maxInputChange = document.querySelector('#max');
 var minInputChange = document.querySelector('#min');
 var randomNumber = generateRandomNumber();
-
-function generateRandomNumber() {
-  return Math.floor(Math.random() * (maxInput - minInput + 1)) + minInput;
-}
 
 userGuessField.addEventListener('keyup', enableOrDisable);
 maxInputChange.addEventListener('keyup', enableOrDisable);
@@ -31,17 +26,22 @@ function enableOrDisable() {
 
 changeRangeButton.addEventListener('click', changeRange);
 
-console.log(randomNumber);
-console.log(maxInput);
-console.log(minInput);
 function changeRange() {
-
   maxInput = parseInt(maxInputChange.value) || maxInput;
   minInput = parseInt(minInputChange.value) || minInput;
 
-  form.reset();
-  generateRandomNumber();
+  randomNumber = generateRandomNumber();
+
+console.log(randomNumber);
+console.log(minInput);
+console.log(maxInput);
 }
+
+
+function generateRandomNumber() {
+  return Math.floor(Math.random() * (maxInput - minInput + 1)) + minInput;
+}
+console.log(randomNumber);
 
 submitGuess.addEventListener('click', checkGuess);
 
@@ -88,7 +88,7 @@ function clearGuess() {
 resetButton.addEventListener('click', resetPage);
 
 function resetPage() {
-  form.reset();
+  document.getElementById('form').reset();
   generateRandomNumber();
 }
 
